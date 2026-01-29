@@ -5,24 +5,19 @@
         <div class="about-text">
           <h2>We offer services for components of these manufacturers</h2>
           <div class="divider"></div>
-          <p>Under orange line: Fleetworks puts a heavy emphasis on diagnosing and pinpointing the problem. This ensures that what's needed to be changed is changed and done right the first time.</p>
+          <p>Under orange line: Fleetworks puts a heavy emphasis on diagnosing and pinpointing the problem. This ensures
+            that what's needed to be changed is changed and done right the first time.</p>
         </div>
         <div class="about-images">
-          <div class="image-float image-1">
-            <IconTools :size="50" class="float-icon" />
-          </div>
-          <div class="image-float image-2">
-            <IconTools :size="50" class="float-icon" />
-          </div>
+          <img src="/images/random-mechanic-1.webp" class="image-float image-1" alt=""/>
+          <img src="/images/random-mechanic-2.webp" class="image-float image-2" alt=""/>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<script setup>
-import { IconTools } from '@tabler/icons-vue'
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 $primary-color: #002D5B;
@@ -76,6 +71,7 @@ $white: white;
 .about-images {
   position: relative;
   height: 400px;
+  width: 100%;
 }
 
 .image-float {
@@ -99,7 +95,6 @@ $white: white;
 }
 
 .image-1 {
-  width: 70%;
   height: 250px;
   top: 0;
   left: 0;
@@ -107,7 +102,6 @@ $white: white;
 }
 
 .image-2 {
-  width: 70%;
   height: 250px;
   bottom: 0;
   right: 0;

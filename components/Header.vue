@@ -1,57 +1,55 @@
 <template>
-  <header>
-    <div class="top-bar">
-      <div class="container">
-        <div class="top-bar-content">
-          <div class="contact-info">
-            <div class="info-item">
-              <IconPhone :size="16" />
-              <span>Call us: (440)829-2132</span>
-            </div>
-            <div class="info-item">
-              <IconClock :size="16" />
-              <span>Opening hours: Mon - Fri: 9.00am - 5.00pm</span>
-            </div>
+  <header class="top-bar">
+    <div class="container">
+      <div class="top-bar-content">
+        <div class="contact-info">
+          <div class="info-item">
+            <IconPhone/>
+            <span>Call us: (440)829-2132</span>
           </div>
-          <div class="social-links">
-            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
-              <IconBrandInstagram :size="18" />
-            </a>
-            <a href="tel:4408292132" aria-label="Phone">
-              <IconPhone :size="18" />
-            </a>
+          <div class="info-item">
+            <IconClock/>
+            <span>Opening hours: Mon - Fri: 9.00am - 5.00pm</span>
           </div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+            <IconBrandInstagram/>
+          </a>
+          <a href="tel:4408292132" aria-label="Phone">
+            <IconPhone/>
+          </a>
         </div>
       </div>
     </div>
+  </header>
 
-    <nav class="main-nav">
-      <div class="container">
-        <div class="nav-content">
-          <div class="logo">
-            <span class="logo-text">FLEETWORKS</span>
-          </div>
-
-          <button class="mobile-menu-toggle" @click="toggleMobileMenu" aria-label="Toggle menu">
-            <IconMenu2 v-if="!mobileMenuOpen" :size="24" />
-            <IconX v-else :size="24" />
-          </button>
-
-          <ul class="nav-menu" :class="{ 'active': mobileMenuOpen }">
-            <li><a href="#home" @click="closeMobileMenu">Home</a></li>
-            <li><a href="#services" @click="closeMobileMenu">Services</a></li>
-            <li><a href="#aboutus" @click="closeMobileMenu">About Us</a></li>
-            <li><a href="#contacts" @click="closeMobileMenu">Contacts</a></li>
-          </ul>
+  <header class="main-nav">
+    <div class="container">
+      <div class="nav-content">
+        <div class="logo">
+          <span class="logo-text">FLEETWORKS</span>
         </div>
+
+        <button class="mobile-menu-toggle" @click="toggleMobileMenu" aria-label="Toggle menu">
+          <IconMenu2 v-if="!mobileMenuOpen" :size="24"/>
+          <IconX v-else :size="24"/>
+        </button>
+
+        <ul class="nav-menu" :class="{ 'active': mobileMenuOpen }">
+          <li><a href="#home" @click="closeMobileMenu">Home</a></li>
+          <li><a href="#services" @click="closeMobileMenu">Services</a></li>
+          <li><a href="#aboutus" @click="closeMobileMenu">About Us</a></li>
+          <li><a href="#contacts" @click="closeMobileMenu">Contacts</a></li>
+        </ul>
       </div>
-    </nav>
+    </div>
   </header>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { IconPhone, IconClock, IconBrandInstagram, IconMenu2, IconX } from '@tabler/icons-vue'
+import {ref} from 'vue'
+import {IconPhone, IconClock, IconBrandInstagram, IconMenu2, IconX} from '@tabler/icons-vue'
 
 const mobileMenuOpen = ref(false)
 
@@ -72,9 +70,6 @@ $border-color: #eee;
 $white: white;
 
 header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
   background: $white;
 }
 
@@ -126,6 +121,10 @@ header {
 }
 
 .main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
   background: $white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 15px 0;

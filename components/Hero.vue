@@ -5,7 +5,7 @@
       <h5 class="hero-subtitle">PROVIDING QUALITY TRUCK AND TRAILER REPAIR</h5>
       <h1 class="hero-title">FLEETWORKS</h1>
       <a href="#scheduleservice" class="cta-button">
-        <IconPlayerPlay :size="18" />
+        <IconPlayerPlay :size="18"/>
         Schedule service
       </a>
     </div>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { IconPlayerPlay } from '@tabler/icons-vue'
+import {IconPlayerPlay} from '@tabler/icons-vue'
 </script>
 
 <style lang="scss" scoped>
@@ -26,8 +26,7 @@ $white: white;
   position: relative;
   height: 100vh;
   min-height: 600px;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23333" width="1200" height="800"/></svg>');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/car-mechanic-work-small.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

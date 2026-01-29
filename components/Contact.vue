@@ -12,7 +12,7 @@
             <div class="divider"></div>
 
             <div class="info-block">
-              <IconMapPin :size="24" class="icon-svg" />
+              <IconMapPin :size="24" class="icon-svg"/>
               <div class="info-text">
                 <h5>Address</h5>
                 <p>3024 Brecksville Rd Ste B Richfield, Ohio 44286</p>
@@ -20,7 +20,7 @@
             </div>
 
             <div class="info-block">
-              <IconPhone :size="24" class="icon-svg" />
+              <IconPhone :size="24" class="icon-svg"/>
               <div class="info-text">
                 <h5>Phone</h5>
                 <p>(440)829-2132</p>
@@ -28,7 +28,7 @@
             </div>
 
             <div class="info-block">
-              <IconMail :size="24" class="icon-svg" />
+              <IconMail :size="24" class="icon-svg"/>
               <div class="info-text">
                 <h5>Email</h5>
                 <p>fleetworksmain@gmail.com</p>
@@ -36,7 +36,7 @@
             </div>
 
             <div class="info-block">
-              <IconBuildingWarehouse :size="24" class="icon-svg" />
+              <IconBuildingWarehouse :size="24" class="icon-svg"/>
               <div class="info-text">
                 <h5>Opening Hours</h5>
                 <p>Mon - Fri: 9.00am to 5.00pm</p>
@@ -45,9 +45,7 @@
           </div>
 
           <div class="office-image">
-            <div class="image-placeholder">
-              <IconBuildingWarehouse :size="80" class="placeholder-icon" />
-            </div>
+            <img class="image" src="/images/top-view.webp" alt="">
           </div>
 
           <div class="contact-form-wrapper">
@@ -88,8 +86,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { IconMapPin, IconPhone, IconMail, IconBuildingWarehouse } from '@tabler/icons-vue'
+import {ref} from 'vue'
+import {IconMapPin, IconPhone, IconMail, IconBuildingWarehouse} from '@tabler/icons-vue'
 
 const formData = ref({
   name: '',
@@ -122,7 +120,7 @@ $white: white;
 
 .contact-header {
   background: linear-gradient(rgba($primary-color, 0.9), rgba($primary-color, 0.9)),
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200"><rect fill="%23333" width="1200" height="200"/></svg>');
+  url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200"><rect fill="%23333" width="1200" height="200"/></svg>');
   background-size: cover;
   background-position: center;
   padding: 60px 20px;
@@ -202,9 +200,9 @@ $white: white;
   justify-content: center;
 }
 
-.image-placeholder {
+.image {
   width: 100%;
-  height: 500px;
+  //height: 500px;
   background: linear-gradient(135deg, $gray-darkest 0%, $gray-darker 100%);
   border-radius: 8px;
   position: relative;
@@ -296,7 +294,8 @@ $white: white;
     order: 3;
   }
 
-  .image-placeholder {
+  .image {
+    width: auto;
     max-height: 400px;
   }
 }
@@ -335,10 +334,6 @@ $white: white;
   .info-block {
     flex-direction: column;
     gap: 8px;
-  }
-
-  .image-placeholder {
-    height: 300px;
   }
 }
 </style>
