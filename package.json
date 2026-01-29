@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "@tabler/icons-vue": "^3.36.1",
-    "nuxt": "^3.13.0"
+    "chokidar": "^5.0.0",
+    "nuxt": "^3.13.0",
+    "readdirp": "^5.0.0",
+    "sass": "^1.97.3"
   },
   "devDependencies": {
     "sass-embedded": "^1.97.3"
