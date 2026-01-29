@@ -8,7 +8,9 @@
           <p>{{ service.description }}</p>
         </div>
         <div v-else class="service-image">
-          <div class="image-placeholder"></div>
+          <div class="image-placeholder">
+            <IconTools :size="60" />
+          </div>
         </div>
       </div>
     </div>
@@ -16,6 +18,8 @@
 </template>
 
 <script setup>
+import { IconTools } from '@tabler/icons-vue'
+
 const services = [
   {
     type: 'text',
@@ -52,10 +56,18 @@ const services = [
 ]
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$primary-dark: #003D7A;
+$primary-darker: #001F3F;
+$gray-light: #f5f5f5;
+$gray-medium: #ddd;
+$gray-dark: #95a5a6;
+$gray-darker: #7f8c8d;
+$white: white;
+
 .services {
   padding: 60px 0;
-  background: #f5f5f5;
+  background: $gray-light;
 }
 
 .services-grid {
@@ -70,50 +82,46 @@ const services = [
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &.text {
+    background: linear-gradient(135deg, $primary-dark 0%, $primary-darker 100%);
+    color: $white;
+    padding: 40px;
+  }
+
+  &.image {
+    background: $gray-medium;
+    overflow: hidden;
+  }
 }
 
-.service-card.text {
-  background: linear-gradient(135deg, #003D7A 0%, #001F3F 100%);
-  color: white;
-  padding: 40px;
-}
+.service-text {
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
 
-.service-card.image {
-  background: #ddd;
-  overflow: hidden;
-}
-
-.service-text h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-.service-text p {
-  font-size: 14px;
-  line-height: 1.8;
-  opacity: 0.95;
-  white-space: pre-line;
+  p {
+    font-size: 14px;
+    line-height: 1.8;
+    opacity: 0.95;
+    white-space: pre-line;
+  }
 }
 
 .image-placeholder {
   width: 100%;
   height: 100%;
   min-height: 350px;
-  background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+  background: linear-gradient(135deg, $gray-dark 0%, $gray-darker 100%);
   position: relative;
-}
-
-.image-placeholder::after {
-  content: '🔧';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 60px;
-  opacity: 0.3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.3);
 }
 
 @media (max-width: 1024px) {
@@ -123,10 +131,10 @@ const services = [
 
   .service-card {
     min-height: 300px;
-  }
 
-  .service-text {
-    padding: 30px;
+    &.text {
+      padding: 30px;
+    }
   }
 
   .service-text h3 {
@@ -145,19 +153,21 @@ const services = [
 
   .service-card {
     min-height: 250px;
+
+    &.text {
+      padding: 25px;
+    }
   }
 
   .service-text {
-    padding: 25px;
-  }
+    h3 {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
 
-  .service-text h3 {
-    font-size: 16px;
-    margin-bottom: 15px;
-  }
-
-  .service-text p {
-    font-size: 13px;
+    p {
+      font-size: 13px;
+    }
   }
 }
 </style>

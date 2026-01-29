@@ -5,26 +5,36 @@
       <h5 class="hero-subtitle">PROVIDING QUALITY TRUCK AND TRAILER REPAIR</h5>
       <h1 class="hero-title">FLEETWORKS</h1>
       <a href="#scheduleservice" class="cta-button">
-        <span>▶</span> Schedule service
+        <IconPlayerPlay :size="18" />
+        Schedule service
       </a>
     </div>
   </section>
 </template>
 
-<style scoped>
+<script setup>
+import { IconPlayerPlay } from '@tabler/icons-vue'
+</script>
+
+<style lang="scss" scoped>
+$primary-color: #002D5B;
+$accent-color: #E74C3C;
+$accent-dark: #C0392B;
+$white: white;
+
 .hero {
   position: relative;
   height: 100vh;
   min-height: 600px;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23333" width="1200" height="800"/></svg>');
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23333" width="1200" height="800"/></svg>');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: $white;
   text-align: center;
 }
 
@@ -34,7 +44,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 45, 91, 0.7);
+  background: rgba($primary-color, 0.7);
 }
 
 .hero-content {
@@ -66,8 +76,8 @@
   align-items: center;
   gap: 10px;
   padding: 15px 35px;
-  background: #E74C3C;
-  color: white;
+  background: $accent-color;
+  color: $white;
   text-decoration: none;
   font-size: 16px;
   font-weight: 600;
@@ -76,12 +86,12 @@
   animation: fadeInUp 1.4s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-}
 
-.cta-button:hover {
-  background: #C0392B;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+  &:hover {
+    background: $accent-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba($accent-color, 0.4);
+  }
 }
 
 @keyframes fadeInUp {
@@ -89,6 +99,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

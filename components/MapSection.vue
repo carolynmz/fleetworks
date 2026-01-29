@@ -15,20 +15,22 @@
   </section>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+$gray-light: #f5f5f5;
+
 .map-section {
-  background: #f5f5f5;
+  background: $gray-light;
 }
 
 .map-container {
   width: 100%;
   height: 450px;
-}
 
-.map-container iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
+  iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 @media (max-width: 768px) {

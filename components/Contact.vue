@@ -12,7 +12,7 @@
             <div class="divider"></div>
 
             <div class="info-block">
-              <div class="icon">📍</div>
+              <IconMapPin :size="24" class="icon-svg" />
               <div class="info-text">
                 <h5>Address</h5>
                 <p>3024 Brecksville Rd Ste B Richfield, Ohio 44286</p>
@@ -20,7 +20,7 @@
             </div>
 
             <div class="info-block">
-              <div class="icon">📞</div>
+              <IconPhone :size="24" class="icon-svg" />
               <div class="info-text">
                 <h5>Phone</h5>
                 <p>(440)829-2132</p>
@@ -28,7 +28,7 @@
             </div>
 
             <div class="info-block">
-              <div class="icon">✉️</div>
+              <IconMail :size="24" class="icon-svg" />
               <div class="info-text">
                 <h5>Email</h5>
                 <p>fleetworksmain@gmail.com</p>
@@ -36,7 +36,7 @@
             </div>
 
             <div class="info-block">
-              <div class="icon">🏢</div>
+              <IconBuildingWarehouse :size="24" class="icon-svg" />
               <div class="info-text">
                 <h5>Opening Hours</h5>
                 <p>Mon - Fri: 9.00am to 5.00pm</p>
@@ -45,7 +45,9 @@
           </div>
 
           <div class="office-image">
-            <div class="image-placeholder"></div>
+            <div class="image-placeholder">
+              <IconBuildingWarehouse :size="80" class="placeholder-icon" />
+            </div>
           </div>
 
           <div class="contact-form-wrapper">
@@ -87,6 +89,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { IconMapPin, IconPhone, IconMail, IconBuildingWarehouse } from '@tabler/icons-vue'
 
 const formData = ref({
   name: '',
@@ -102,25 +105,35 @@ const handleSubmit = () => {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$primary-color: #002D5B;
+$accent-color: #E74C3C;
+$accent-dark: #C0392B;
+$gray-light: #f5f5f5;
+$gray-medium: #ddd;
+$gray-dark: #555;
+$gray-darker: #7f8c8d;
+$gray-darkest: #95a5a6;
+$white: white;
+
 .contact {
-  background: white;
+  background: $white;
 }
 
 .contact-header {
-  background: linear-gradient(rgba(0, 45, 91, 0.9), rgba(0, 45, 91, 0.9)),
-              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200"><rect fill="%23333" width="1200" height="200"/></svg>');
+  background: linear-gradient(rgba($primary-color, 0.9), rgba($primary-color, 0.9)),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200"><rect fill="%23333" width="1200" height="200"/></svg>');
   background-size: cover;
   background-position: center;
   padding: 60px 20px;
   text-align: center;
-  color: white;
-}
+  color: $white;
 
-.contact-header h2 {
-  font-size: 42px;
-  font-weight: 700;
-  text-transform: uppercase;
+  h2 {
+    font-size: 42px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
 }
 
 .contact-content {
@@ -139,17 +152,19 @@ const handleSubmit = () => {
   gap: 40px;
 }
 
-.office-info h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: #002D5B;
-  margin-bottom: 20px;
+.office-info {
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: $primary-color;
+    margin-bottom: 20px;
+  }
 }
 
 .divider {
   width: 60px;
   height: 3px;
-  background: #E74C3C;
+  background: $accent-color;
   margin-bottom: 30px;
 }
 
@@ -157,24 +172,28 @@ const handleSubmit = () => {
   display: flex;
   gap: 15px;
   margin-bottom: 25px;
+  align-items: flex-start;
 }
 
-.info-block .icon {
-  font-size: 24px;
-  color: #E74C3C;
+.icon-svg {
+  color: $accent-color;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
-.info-text h5 {
-  font-size: 16px;
-  font-weight: 700;
-  color: #002D5B;
-  margin-bottom: 5px;
-}
+.info-text {
+  h5 {
+    font-size: 16px;
+    font-weight: 700;
+    color: $primary-color;
+    margin-bottom: 5px;
+  }
 
-.info-text p {
-  font-size: 14px;
-  color: #555;
-  line-height: 1.6;
+  p {
+    font-size: 14px;
+    color: $gray-dark;
+    line-height: 1.6;
+  }
 }
 
 .office-image {
@@ -186,71 +205,70 @@ const handleSubmit = () => {
 .image-placeholder {
   width: 100%;
   height: 500px;
-  background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+  background: linear-gradient(135deg, $gray-darkest 0%, $gray-darker 100%);
   border-radius: 8px;
   position: relative;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.image-placeholder::after {
-  content: '🏢';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 80px;
-  opacity: 0.3;
+  .placeholder-icon {
+    opacity: 0.3;
+    color: $white;
+  }
 }
 
 .contact-form-wrapper {
-  background: #002D5B;
+  background: $primary-color;
   padding: 35px;
   border-radius: 8px;
-  color: white;
+  color: $white;
+
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
 }
 
-.contact-form-wrapper h3 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 25px;
-}
+.contact-form {
+  .form-group {
+    margin-bottom: 20px;
+  }
 
-.contact-form .form-group {
-  margin-bottom: 20px;
-}
+  label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
 
-.contact-form label {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 8px;
-  font-weight: 500;
-}
+  input,
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid $gray-medium;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s;
 
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-  font-family: inherit;
-  transition: border-color 0.3s;
-}
+    &:focus {
+      outline: none;
+      border-color: $accent-color;
+    }
+  }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: #E74C3C;
-}
-
-.contact-form textarea {
-  resize: vertical;
+  textarea {
+    resize: vertical;
+  }
 }
 
 .submit-btn {
   width: 100%;
   padding: 14px;
-  background: #E74C3C;
-  color: white;
+  background: $accent-color;
+  color: $white;
   border: none;
   border-radius: 4px;
   font-size: 15px;
@@ -258,10 +276,10 @@ const handleSubmit = () => {
   cursor: pointer;
   transition: background 0.3s;
   letter-spacing: 1px;
-}
 
-.submit-btn:hover {
-  background: #C0392B;
+  &:hover {
+    background: $accent-dark;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -286,10 +304,10 @@ const handleSubmit = () => {
 @media (max-width: 768px) {
   .contact-header {
     padding: 40px 20px;
-  }
 
-  .contact-header h2 {
-    font-size: 32px;
+    h2 {
+      font-size: 32px;
+    }
   }
 
   .contact-content {
@@ -302,10 +320,10 @@ const handleSubmit = () => {
 
   .contact-form-wrapper {
     padding: 25px;
-  }
 
-  .contact-form-wrapper h3 {
-    font-size: 20px;
+    h3 {
+      font-size: 20px;
+    }
   }
 }
 

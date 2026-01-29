@@ -8,18 +8,33 @@
           <p>Under orange line: Fleetworks puts a heavy emphasis on diagnosing and pinpointing the problem. This ensures that what's needed to be changed is changed and done right the first time.</p>
         </div>
         <div class="about-images">
-          <div class="image-float image-1"></div>
-          <div class="image-float image-2"></div>
+          <div class="image-float image-1">
+            <IconTools :size="50" class="float-icon" />
+          </div>
+          <div class="image-float image-2">
+            <IconTools :size="50" class="float-icon" />
+          </div>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<style scoped>
+<script setup>
+import { IconTools } from '@tabler/icons-vue'
+</script>
+
+<style lang="scss" scoped>
+$primary-color: #002D5B;
+$accent-color: #E74C3C;
+$gray-dark: #555;
+$gray-darkest: #95a5a6;
+$gray-darker: #7f8c8d;
+$white: white;
+
 .about-us {
   padding: 80px 0;
-  background: white;
+  background: $white;
 }
 
 .container {
@@ -35,25 +50,27 @@
   align-items: center;
 }
 
-.about-text h2 {
-  font-size: 36px;
-  font-weight: 700;
-  color: #002D5B;
-  margin-bottom: 25px;
-  line-height: 1.3;
+.about-text {
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: $primary-color;
+    margin-bottom: 25px;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: $gray-dark;
+  }
 }
 
 .divider {
   width: 80px;
   height: 4px;
-  background: #E74C3C;
+  background: $accent-color;
   margin-bottom: 25px;
-}
-
-.about-text p {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #555;
 }
 
 .about-images {
@@ -63,20 +80,22 @@
 
 .image-float {
   position: absolute;
-  background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+  background: linear-gradient(135deg, $gray-darkest 0%, $gray-darker 100%);
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 }
 
-.image-float::after {
-  content: '🔧';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 50px;
+.float-icon {
   opacity: 0.3;
+  color: $white;
 }
 
 .image-1 {
@@ -93,10 +112,6 @@
   bottom: 0;
   right: 0;
   z-index: 1;
-}
-
-.image-float:hover {
-  transform: translateY(-5px);
 }
 
 @media (max-width: 1024px) {
@@ -128,12 +143,14 @@
     gap: 40px;
   }
 
-  .about-text h2 {
-    font-size: 26px;
-  }
+  .about-text {
+    h2 {
+      font-size: 26px;
+    }
 
-  .about-text p {
-    font-size: 15px;
+    p {
+      font-size: 15px;
+    }
   }
 
   .about-images {
@@ -144,12 +161,14 @@
 }
 
 @media (max-width: 480px) {
-  .about-text h2 {
-    font-size: 22px;
-  }
+  .about-text {
+    h2 {
+      font-size: 22px;
+    }
 
-  .about-text p {
-    font-size: 14px;
+    p {
+      font-size: 14px;
+    }
   }
 
   .about-images {
