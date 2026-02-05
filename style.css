@@ -24,6 +24,25 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
 }
 
+a {
+  color: inherit;
+}
+
+svg.tabler-icon {
+  width: var(--icon-size, 1.5rem);
+  height: var(--icon-size, 1.5rem);
+  max-width: initial;
+  vertical-align: text-top;
+  flex-shrink: 0;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
 header {
   background: #fff
 }
@@ -94,7 +113,7 @@ header {
   justify-content: space-between
 }
 
-.logo{
+.logo {
   display: flex;
   gap: 15px;
   height: 32px;
@@ -626,6 +645,7 @@ header {
 }
 
 .icon-svg {
+  --icon-size: 24px;
   color: #e74c3c;
   flex-shrink: 0;
   margin-top: 2px
@@ -659,6 +679,7 @@ header {
 }
 
 .contact-form-wrapper {
+  position: relative;
   background: linear-gradient(180deg, #01254D 0%, #04162D 80%);
   border-radius: 8px;
   color: #fff;
@@ -718,6 +739,61 @@ header {
 .submit-btn:hover {
   background: #c0392b
 }
+
+.form-spinner,
+.form-success,
+.form-error {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.25rem;
+
+  background: linear-gradient(180deg, rgba(1, 37, 77, 0.8) 0%, rgba(4, 22, 46, 0.9) 100%);
+  backdrop-filter: blur(16px);
+  border-radius: 8px;
+  cursor: pointer;
+  --icon-size: 4rem;
+}
+
+.form-spinner .tabler-icon {
+  animation: spin 0.75s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.form-success .tabler-icon {
+  color: #81c784;
+}
+
+.form-error .tabler-icon {
+  color: #f06262;
+}
+
+form:not(.contact-form-loading) .form-spinner {
+  display: none;
+}
+
+form:not(.contact-form-success) .form-success {
+  display: none;
+}
+
+form:not(.contact-form-error) .form-error {
+  display: none;
+}
+
 
 @media (max-width: 1024px) {
   .contact-grid {
