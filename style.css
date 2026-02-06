@@ -419,11 +419,6 @@ header {
   transition: transform 0.5s ease, filter 0.5s ease;
 }
 
-.service-card-combine:hover .service-card.image:before {
-  transform: scaleX(1.2);
-  filter: blur(1rem);
-}
-
 .service-card.image:after {
   content: "";
   position: absolute;
