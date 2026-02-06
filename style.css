@@ -42,6 +42,18 @@ svg.tabler-icon {
   stroke-linejoin: round;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 
 header {
   background: #fff
@@ -50,7 +62,6 @@ header {
 .top-bar {
   background: #002d5b;
   color: #fff;
-  font-size: 14px;
   padding: 15px 0
 }
 
@@ -156,7 +167,7 @@ header {
 
 @media (max-width: 768px) {
   .top-bar {
-    font-size: 12px;
+    font-size: 14px;
     padding: 8px 0
   }
 
@@ -172,7 +183,7 @@ header {
   }
 
   .info-item {
-    font-size: 12px;
+    font-size: 14px;
     justify-content: center
   }
 
@@ -214,19 +225,8 @@ header {
   }
 }
 
-@media (max-width: 480px) {
-  .top-bar {
-    font-size: 11px
-  }
-
-  .logo-text {
-    font-size: 20px
-  }
-}
-
 .hero {
   align-items: center;
-  background-attachment: fixed;
   background-image: linear-gradient(#00000080, #00000080), url(/images/car-mechanic-work-small.webp);
   background-position: 50%;
   background-size: cover;
@@ -257,7 +257,7 @@ header {
   font-size: 36px;
   font-weight: 400;
   letter-spacing: 2px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   text-transform: uppercase
 }
 
@@ -268,6 +268,10 @@ header {
   letter-spacing: 4px;
   margin-bottom: 30px;
   line-height: 1em;
+}
+
+.hero-title img {
+  max-width: 100%;
 }
 
 .cta-button {
@@ -316,11 +320,6 @@ header {
 
   .hero-title {
     font-size: 48px
-  }
-
-  .cta-button {
-    font-size: 14px;
-    padding: 12px 28px
   }
 }
 
@@ -428,20 +427,19 @@ header {
 
 @media (max-width: 768px) {
   .service-text h3 {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 15px
   }
 }
 
 .service-text p {
-  font-size: 14px;
   line-height: 1.8;
   opacity: .95;
 }
 
 @media (max-width: 768px) {
   .service-text p {
-    font-size: 13px
+    font-size: 14px
   }
 }
 
@@ -644,7 +642,7 @@ header {
 }
 
 .icon-svg {
-  --icon-size: 24px;
+  --icon-size: 28px;
   color: #e74c3c;
   flex-shrink: 0;
   margin-top: 2px
@@ -652,15 +650,13 @@ header {
 
 .info-text h5 {
   color: #002d5b;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   margin-bottom: 5px
 }
 
 .info-text p {
   color: #555;
-  font-size: 14px;
-  line-height: 1.6
 }
 
 .office-image, .office-image-container {
@@ -706,7 +702,6 @@ header {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-family: inherit;
-  font-size: 14px;
   padding: 12px;
   transition: border-color .3s;
   width: 100%
@@ -727,7 +722,6 @@ header {
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
-  font-size: 15px;
   font-weight: 700;
   letter-spacing: 1px;
   padding: 14px;
@@ -913,7 +907,6 @@ form:not(.contact-form-error) .form-error {
 
 .footer-col p {
   color: #ffffffe6;
-  font-size: 14px;
   line-height: 1.8;
   margin-bottom: 10px
 }
@@ -926,7 +919,6 @@ form:not(.contact-form-error) .form-error {
 
 .footer-bottom p {
   color: #fffc;
-  font-size: 13px;
   margin: 0
 }
 
@@ -944,9 +936,9 @@ form:not(.contact-form-error) .form-error {
     font-size: 18px
   }
 
-  .footer-col p {
-    font-size: 13px
-  }
+  /*.footer-col p {*/
+  /*  font-size: 13px*/
+  /*}*/
 }
 
 @media (max-width: 480px) {
@@ -955,10 +947,10 @@ form:not(.contact-form-error) .form-error {
   }
 
   .footer-col h4 {
-    font-size: 16px
+    font-size: 18px
   }
 
-  .footer-bottom p, .footer-col p {
-    font-size: 12px
-  }
+  /*.footer-bottom p, .footer-col p {*/
+  /*  font-size: 12px*/
+  /*}*/
 }
