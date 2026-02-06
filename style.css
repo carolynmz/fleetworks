@@ -414,7 +414,7 @@ header {
   position: absolute;
   inset: -1rem;
   z-index: 1;
-  background-image: radial-gradient(closest-corner at center, #969696, #5b5b5c);
+  background-image: radial-gradient(closest-corner at center, #ffffff, #f0f0f0);
   filter: blur(0.5rem);
   transition: transform 0.5s ease, filter 0.5s ease;
 }
