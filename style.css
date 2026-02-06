@@ -437,7 +437,6 @@ header {
   font-size: 14px;
   line-height: 1.8;
   opacity: .95;
-  white-space: pre-line
 }
 
 @media (max-width: 768px) {
