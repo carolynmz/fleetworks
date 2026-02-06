@@ -56,7 +56,8 @@ svg.tabler-icon {
 
 
 header {
-  background: #fff
+  background: #fff;
+  width: 100%;
 }
 
 .top-bar {
