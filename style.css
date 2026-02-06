@@ -405,10 +405,34 @@ header {
 }
 
 .service-card.image {
-  background-color: #ddd;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card.image:before {
+  content: "";
+  position: absolute;
+  inset: -1rem;
+  z-index: 1;
+  background-image: radial-gradient(closest-corner at center, #969696, #5b5b5c);
+  filter: blur(0.5rem);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.service-card-combine:hover .service-card.image:before {
+  transform: scaleX(1.2);
+  filter: blur(1rem);
+}
+
+.service-card.image:after {
+  content: "";
+  position: absolute;
+  inset: 0.5rem;
+  z-index: 2;
+  background-image: var(--picture);
   background-position: 50%;
-  background-size: cover;
-  overflow: hidden
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .service-text h3 {
