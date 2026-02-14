@@ -436,6 +436,7 @@
 </script>
 <script type="module">
   import PhotoSwipeLightbox from '/lib/photoswipe/photoswipe-lightbox.esm.min.js';
+  import PhotoSwipe from '/lib/photoswipe/photoswipe.esm.min.js';
 
   const initGallery = (gallery, target) => {
     const imageNodes = Array.from(gallery.querySelectorAll("img"));
@@ -450,7 +451,7 @@
       gallery: gallery,
       dataSource: images,
       showHideAnimationType: 'zoom',
-      pswpModule: () => import('/lib/photoswipe/photoswipe.esm.min.js'),
+      pswpModule: PhotoSwipe,
     });
 
     // For zoom animation
