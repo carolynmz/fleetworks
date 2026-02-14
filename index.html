@@ -13,7 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="HandheldFriendly" content="True">
-  <link rel="stylesheet" href="/style.css?v=20260206-2">
+  <link rel="stylesheet" href="/style.css?v=20260214-1">
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.css?v=20260214-1">
   <title>FLEETWORKS PARTS AND SERVICE</title>
   <meta name="description"
         content="Mechanical powertrain diagnostics/repair. Electrical diagnostics/repair. Customer wiring and harnesses. Tune up, preventative maintenance (PM) services">
@@ -250,8 +251,12 @@
           </div>
         </div>
 
-        <div class="office-image-container">
-          <img class="office-image" src="/images/top-view.webp" alt="">
+        <div class="office-image-container js-my-gallery">
+          <img role="button"
+               class="office-image"
+               src="/images/top-view.png"
+               data-src="/images/top-view-full.png"
+               alt="">
         </div>
 
         <div class="contact-form-wrapper">
@@ -353,82 +358,120 @@
   </div>
 </footer>
 
-<script>
-  (() => {
-    document.querySelectorAll(".mobile-menu-toggle").forEach((toggle) => {
-      const menus = toggle.parentElement.querySelectorAll(".nav-menu");
-      toggle.addEventListener("click", (event) => {
-        event.preventDefault();
-        menus.forEach(menu => menu.classList.toggle("active"));
-      });
-      menus.forEach(menu => {
-        menu.addEventListener("click", () => {
-          menu.classList.remove("active");
-        })
+<script type="module">
+  document.querySelectorAll(".mobile-menu-toggle").forEach((toggle) => {
+    const menus = toggle.parentElement.querySelectorAll(".nav-menu");
+    toggle.addEventListener("click", (event) => {
+      event.preventDefault();
+      menus.forEach(menu => menu.classList.toggle("active"));
+    });
+    menus.forEach(menu => {
+      menu.addEventListener("click", () => {
+        menu.classList.remove("active");
       })
+    })
+  });
+</script>
+<script type="module">
+  const formConfigs = {
+    '641edda8-be2d-4c80-a71b-3300c6f2908c': {
+      endpoint: ["h", "t", "t", "p", "s", ":", "/", "/", "d", "o", "c", "s", ".", "g", "o", "o", "g", "l", "e", ".", "c", "o", "m", "/", "f", "o", "r", "m", "s", "/", "u", "/", "0", "/", "d", "/", "e", "/", "1FAIpQLScoe_2EhHBcmrO0HP7Udve3sUN9i0mNfOYvEnMRlm-1nUZmHg", "/", "for", "mRe", "spo", "nse"].join(""),
+      fieldsMap: {
+        name: "entry.674127716",
+        company: "entry.1675973576",
+        phone: "entry.800986520",
+        truck: "entry.1219318573",
+        description: "entry.899020897",
+      },
+    }
+  };
+  document.querySelectorAll("form").forEach((form) => {
+    const config = formConfigs[form.dataset.id];
+    if (!config) {
+      // Need to set the data-id attribute on form according to `formConfigs` variable
+      // Can be any string, but I use uuid because it looks cool
+      console.error("Form is not configured!");
+      return;
+    }
+
+    const elements = Array.from(form.elements);
+    elements.forEach((input) => {
+      input.removeAttribute("disabled");
     });
+    form.addEventListener("submit", async (event) => {
+      try {
+        event.preventDefault();
 
-    const formConfigs = {
-      '641edda8-be2d-4c80-a71b-3300c6f2908c': {
-        endpoint: ["h", "t", "t", "p", "s", ":", "/", "/", "d", "o", "c", "s", ".", "g", "o", "o", "g", "l", "e", ".", "c", "o", "m", "/", "f", "o", "r", "m", "s", "/", "u", "/", "0", "/", "d", "/", "e", "/", "1FAIpQLScoe_2EhHBcmrO0HP7Udve3sUN9i0mNfOYvEnMRlm-1nUZmHg", "/", "for", "mRe", "spo", "nse"].join(""),
-        fieldsMap: {
-          name: "entry.674127716",
-          company: "entry.1675973576",
-          phone: "entry.800986520",
-          truck: "entry.1219318573",
-          description: "entry.899020897",
-        },
-      }
-    };
-    document.querySelectorAll("form").forEach((form) => {
-      const config = formConfigs[form.dataset.id];
-      if (!config) {
-        // Need to set the data-id attribute on form according to `formConfigs` variable
-        // Can be any string, but I use uuid because it looks cool
-        console.error("Form is not configured!");
-        return;
-      }
+        form.setAttribute("inert", "inert");
+        form.classList.add("contact-form-loading");
 
-      const elements = Array.from(form.elements);
-      elements.forEach((input) => {
-        input.removeAttribute("disabled");
-      });
-      form.addEventListener("submit", async (event) => {
-        try {
-          event.preventDefault();
-
-          form.setAttribute("inert", "inert");
-          form.classList.add("contact-form-loading");
-
-          const formData = new FormData();
-          elements.forEach((input) => {
-            const name = config.fieldsMap[input.name] || config.fieldsMap[input.id] || input.name || input.id;
-            formData.append(name, input.value);
-          });
-
-          await fetch(config.endpoint, {
-            method: "POST",
-            body: formData,
-            mode: "no-cors",
-          });
-
-          form.classList.add("contact-form-success");
-          form.reset();
-        } catch (e) {
-          console.error(e);
-          form.classList.add("contact-form-error");
-        } finally {
-          form.removeAttribute("inert");
-          form.classList.remove("contact-form-loading");
-        }
-      });
-      form.querySelectorAll(".form-spinner, .form-success, .form-error").forEach((overlay) => {
-        overlay.addEventListener("click", () => {
-          form.classList.remove("contact-form-loading", "contact-form-success", "contact-form-error");
+        const formData = new FormData();
+        elements.forEach((input) => {
+          const name = config.fieldsMap[input.name] || config.fieldsMap[input.id] || input.name || input.id;
+          formData.append(name, input.value);
         });
+
+        await fetch(config.endpoint, {
+          method: "POST",
+          body: formData,
+          mode: "no-cors",
+        });
+
+        form.classList.add("contact-form-success");
+        form.reset();
+      } catch (e) {
+        console.error(e);
+        form.classList.add("contact-form-error");
+      } finally {
+        form.removeAttribute("inert");
+        form.classList.remove("contact-form-loading");
+      }
+    });
+    form.querySelectorAll(".form-spinner, .form-success, .form-error").forEach((overlay) => {
+      overlay.addEventListener("click", () => {
+        form.classList.remove("contact-form-loading", "contact-form-success", "contact-form-error");
       });
     });
-  })();
+  });
+</script>
+<script type="module">
+  import PhotoSwipeLightbox from '/lib/photoswipe/photoswipe-lightbox.esm.min.js';
+
+  const initGallery = (gallery, target) => {
+    const imageNodes = Array.from(gallery.querySelectorAll("img"));
+    const images = imageNodes
+      .map(imageNode => ({
+        thumbEl: imageNode,
+        src: imageNode.dataset.src || imageNode.src,
+        width: imageNode.naturalWidth,
+        height: imageNode.naturalHeight,
+      }));
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: gallery,
+      dataSource: images,
+      showHideAnimationType: 'zoom',
+      pswpModule: () => import('/lib/photoswipe/photoswipe.esm.min.js'),
+    });
+
+    // For zoom animation
+    lightbox.addFilter('thumbEl', (thumbEl, data, index) => {
+      return data.thumbEl;
+    });
+    lightbox.addFilter('placeholderSrc', (thumbEl, data, index) => {
+      return data.data.thumbEl.src;
+    });
+
+    lightbox.loadAndOpen(imageNodes.indexOf(target));
+  }
+
+  window.addEventListener("click", event => {
+    if (event.target.tagName === "IMG") {
+      const gallery = event.target.closest(".js-my-gallery");
+      if (gallery) {
+        initGallery(gallery, event.target);
+      }
+    }
+  });
 </script>
 </body>
 </html>

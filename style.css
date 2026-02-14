@@ -54,6 +54,9 @@ svg.tabler-icon {
   border-width: 0;
 }
 
+.js-my-gallery img {
+  cursor: pointer;
+}
 
 header {
   background: #fff;
